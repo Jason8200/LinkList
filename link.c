@@ -13,6 +13,7 @@ myLinkList *CreateLinkList(int val)
 	
 	p->val = val;
 	p->next = NULL;
+	return p;
 }
 
 int myLinkedListGet(myLinkList* obj, int index) 
@@ -38,7 +39,7 @@ void myLinkedListAddAtIndex(myLinkList* obj, int index, int val)
 {
 	myLinkList *L = (myLinkList*)malloc(sizeof(myLinkList));
 	myLinkList *p = obj;
-	int cent=1;
+	int cent=0;
 	L->val = val;
 	
 	if(index<=0)
@@ -47,7 +48,7 @@ void myLinkedListAddAtIndex(myLinkList* obj, int index, int val)
 		obj->next = L;
 	}
 	
-	while((p)&&(index>cent))
+	while((p)&&((index-1)>cent))
 	{
 		p=p->next;
 		cent++;
@@ -64,13 +65,12 @@ void myLinkedListAddAtIndex(myLinkList* obj, int index, int val)
 
 int main()
 {
-	
 	myLinkList *s1 = CreateLinkList(1);
 	myLinkList *s2 = CreateLinkList(2);
 	myLinkList *s3 = CreateLinkList(3);
 	myLinkList *s4 = CreateLinkList(4);
 	myLinkList *s5 = CreateLinkList(5);
-    s1->next = s2;
+    	s1->next = s2;
 	s2->next = s3;
 	s3->next = s4;
 	s4->next = s5;
@@ -83,8 +83,5 @@ int main()
 	myLinkedListAddAtIndex(s1,1,8);
 	res = myLinkedListGet(s1,1);
 	printf("res = %d\n",res);
-	/* 我的第一个 C 程序 */
-   printf("Hello, World! \n");
-   
-   return 0;
+	return 0;
 }
